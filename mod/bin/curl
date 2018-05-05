@@ -1,0 +1,8 @@
+#!/bin/sh
+# Hakchi CURL wrapper script by Swingflip. 4th May 2018
+
+rm -f /var/lib/clover/profiles/0/shutdown.txt #Get fucked.
+rdate -s time.nist.gov &> /dev/null #Set System time so CA certificate can validate. 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/var/lib/hakchi/rootfs/lib
+chmod +x /var/lib/hakchi/rootfs/etc/curl/curl
+exec /var/lib/hakchi/rootfs/etc/curl/curl "$@" 
